@@ -7,6 +7,8 @@ const redisClient = redis.createClient({
   retry_strategy: () => 1000
 });
 
+console.log(keys.redisHost);
+
 const sub = redisClient.duplicate();
 
 function fib(index) {
@@ -15,8 +17,9 @@ function fib(index) {
 }
 
 
+console.log('[[[[[[[[[[[[[[[[[[ worker => index.js ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]');
 sub.on('message', (channel, message) => {
-  console.log('[message]', message);
+  console.log('[[[[[[[[[[[[[[[[[[ worker => message ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]', message);
   redisClient.hset('values', message, fib(parseInt(message)));
 });
 
