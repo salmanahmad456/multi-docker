@@ -3,11 +3,11 @@ language: node_js
 services:
   - docker
 
-# before_install:
-#   - docker build -t salmanahmadnxb/react-test -f ./client/Dockerfile.dev ./client
+before_install:
+  - docker build -t salmanahmadnxb/react-test -f ./client/Dockerfile.dev ./client
 
-# script:
-#   - docker run -e CI=true salmanahmadnxb/react-test yarn test
+script:
+  - docker run -e CI=true salmanahmadnxb/react-test yarn test
 
 after_success:
   # Build all images
